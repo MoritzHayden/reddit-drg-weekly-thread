@@ -1,0 +1,26 @@
+name: Post
+
+on:
+  schedule:
+    - cron: '10 11 * * 4'
+
+jobs:
+  post:
+    name: Post
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Install dependencies
+        run: mkdir .venv -p && pipenv install --dev
+
+      - name: Run script
+        run: pipenv run python main.py
