@@ -19,8 +19,13 @@ jobs:
         with:
           ref: main
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
       - name: Install dependencies
-        run: mkdir .venv -p && pipenv install --dev
+        run: mkdir .venv -p && && pip install --upgrade pip && pip install pipenv && pipenv install --dev
 
       - name: Run script
         run: pipenv run python main.py
