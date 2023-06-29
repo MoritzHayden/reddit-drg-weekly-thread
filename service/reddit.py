@@ -20,10 +20,9 @@ class RedditService:
                                   check_for_async=self.check_for_async)
 
     def get_last_weekly_deep_dives_thread_url(self) -> str:
-        threads = self.reddit.subreddit("DeepRockGalactic")
-                             .search(query="Weekly Deep Dives Thread",
-                                     sort="hot",
-                                     time_filter="week")
+        threads = self.reddit.subreddit("DeepRockGalactic").search(query="Weekly Deep Dives Thread",
+                                                                   sort="hot",
+                                                                   time_filter="week")
         return next(threads).url
 
     def post_weekly_deep_dives_thread(self, thread_title: str, thread_text: str) -> None:
