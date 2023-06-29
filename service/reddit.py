@@ -6,18 +6,12 @@ import praw
 class RedditService:
     def __init__(self):
         load_dotenv()
-        self.client_id: str | None = os.getenv('REDDIT_CLIENT_ID')
-        self.client_secret: str | None = os.getenv('REDDIT_CLIENT_SECRET')
-        self.username: str | None = os.getenv('REDDIT_USERNAME')
-        self.password: str | None = os.getenv('REDDIT_PASSWORD')
-        self.user_agent: str = "MoritzHayden:reddit-drg-weekly-thread"
-        self.check_for_async: bool = False
-        self.reddit = praw.Reddit(client_id=self.client_id,
-                                  client_secret=self.client_secret,
-                                  username=self.username,
-                                  password=self.password,
-                                  user_agent=self.user_agent,
-                                  check_for_async=self.check_for_async)
+        self.reddit = praw.Reddit(client_id=os.getenv('REDDIT_CLIENT_ID'),
+                                  client_secret=os.getenv('REDDIT_CLIENT_SECRET'),
+                                  username=os.getenv('REDDIT_USERNAME'),
+                                  password=os.getenv('REDDIT_PASSWORD'),
+                                  user_agent="MoritzHayden:reddit-drg-weekly-thread",
+                                  check_for_async=False)
 
     def get_last_weekly_deep_dives_thread_url(self) -> str:
         threads = self.reddit.subreddit("DeepRockGalactic").search(query="Weekly Deep Dives Thread",
