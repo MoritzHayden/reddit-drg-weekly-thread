@@ -2,7 +2,7 @@ name: Post
 
 on:
   schedule:
-    - cron: '10 11 * * 4'
+    - cron: '20 11 * * 4'
   push:
     branches:
       - main
@@ -28,7 +28,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: mkdir .venv -p && && pip install --upgrade pip && pip install pipenv && pipenv install --dev
+        run: mkdir -p .venv && && pip install --upgrade pip && pip install pipenv && pipenv install --dev
 
       - name: Run script
         run: pipenv run python main.py
