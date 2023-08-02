@@ -31,7 +31,7 @@ elif day % 10 == 3:
     suffix = "rd"
 else:
     suffix = "th"
-formatted_date = date.strftime(f"%d{suffix} %B %Y")
+formatted_date = date.strftime(f"%-d{suffix} %B %Y")
 thread_title: str = f"Weekly Deep Dives Thread - {formatted_date}"
 
 # Create the post text
