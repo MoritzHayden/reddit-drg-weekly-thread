@@ -17,7 +17,10 @@ class RedditService:
         threads = self.reddit.subreddit("DeepRockGalactic").search(query="Weekly Deep Dives Thread",
                                                                    sort="hot",
                                                                    time_filter="week")
-        return next(threads).url
+        try:
+            return next(threads).url
+        except:
+            return "https://www.reddit.com/r/DeepRockGalactic/"
 
     def post_weekly_deep_dives_thread(self, thread_title: str, thread_text: str) -> None:
         self.reddit.subreddit("DeepRockGalactic").submit(
